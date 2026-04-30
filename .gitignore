@@ -1,0 +1,15 @@
+# Pastas de editores (VS Code e IntelliJ)
+.vscode/
+.idea/
+
+# Arquivos do sistema (Windows e Mac)
+.DS_Store
+Thumbs.db
+
+# Logs e arquivos temporários
+*.log
+.env
+
+# Se decidirem usar bibliotecas no futuro
+node_modules/
+dist/
