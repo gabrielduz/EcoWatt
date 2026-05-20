@@ -1,0 +1,193 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --verde-sustentavel: #10b981;
+    --verde-hover: #0ca673;
+    --amarelo-eletrico: #f59e0b;
+    --azul-noturno: #0f172a;
+    
+    --fundo-tela: #f4f6f8;
+    --fundo-card: #ffffff;
+    --texto-principal: #334155;
+    --texto-secundario: #475569;
+    --borda-suave: #e2e8f0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--fundo-tela);
+    color: var(--texto-principal);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    height: 70px;
+    background-color: var(--fundo-card);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--borda-suave);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo .eco-part {
+    color: var(--verde-sustentavel);
+}
+
+.logo .watt-part {
+    color: #0f172a;
+    transition: color 0.3s ease;
+}
+
+.nav-items {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-items a {
+    text-decoration: none;
+    color: var(--texto-secundario);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-items a:hover {
+    color: var(--verde-sustentavel);
+}
+
+.menu-toggle {
+    display: none;
+    color: var(--azul-noturno);
+}
+
+body.modo-escuro {
+    --fundo-tela: #0f172a;
+    --fundo-card: #1e293b;
+    --texto-principal: #f8fafc;
+    --texto-secundario: #94a3b8;
+    --borda-suave: #334155; 
+    --azul-noturno: #38bdf8; 
+    --amarelo-eletrico: #f59e0b;
+}
+
+body.modo-escuro .logo .watt-part {
+    color: var(--amarelo-eletrico);
+}
+
+body.modo-escuro input, 
+body.modo-escuro select,
+body.modo-escuro textarea {
+    background-color: #1e293b;
+    color: #f8fafc;
+    border: 1px solid #334155;
+}
+
+.sidebar, .dashboard, .card-aparelho, input, select {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        display: flex !important;
+        flex-direction: row !important; 
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 20px !important; 
+        height: 60px !important; 
+        width: 100% !important;
+        box-sizing: border-box !important; 
+        position: relative;
+    }
+
+    .logo {
+        flex: none;
+        margin: 0 !important;
+        font-size: 1.2rem !important;
+    }
+
+    .menu-toggle {
+        display: block !important;
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        line-height: 1;
+        padding: 0; 
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;   
+        right: 20px; 
+        width: auto; 
+        min-width: 160px; 
+        background-color: var(--fundo-card);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+        border-radius: 8px; 
+        z-index: 1000;
+        overflow: hidden; 
+    }
+
+    .nav-links.active {
+        display: block !important;
+    }
+   
+    .navbar {
+        margin: 0 !important;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-items {
+        list-style: none;
+        padding: 0;      
+        margin: 0;
+        display: flex;
+        flex-direction: column; 
+    }
+
+    .nav-links li {
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none; 
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 12px 24px; 
+        text-decoration: none;
+        color: var(--texto-principal);
+        white-space: nowrap; 
+        width: 100%;
+    }
+
+    .nav-links a:hover {
+        background-color: var(--fundo-tela);
+        color: var(--verde-sustentavel);
+    }
+}

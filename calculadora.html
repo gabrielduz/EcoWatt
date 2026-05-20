@@ -1,19 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Calculadora</title>
+    <title>Calculadora - EcoWatt</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/calculadora.css">
 </head>
 <body>
+
+    <header class="main-header">
+        <div class="logo">
+            <span class="eco-part">Eco</span><span class="watt-part">Watt</span>
+        </div>
+        
+        <nav class="navbar">
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+            
+            <div class="nav-links" id="nav-links">
+                <ul class="nav-items">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="calculadora.html">Calculadora</a></li>
+                    <li><button id="toggle-escuro" class="botao-secundario" style="padding: 8px 12px;">🌙 Modo Escuro</button></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="calculadora-box"> 
+        <aside class="sidebar"> 
+            <h3>Adicionar Aparelho</h3> 
     
+            <form id="forms-aparelhos" class="formulario-aparelhos"> 
+                <div class="container-pesquisa"> 
+                    <i class="fas fa-search search-icon"></i> 
+                    <input type="text" id="pesquisa-aparelhos" placeholder="Pesquisar aparelho..." autocomplete="off"> 
+                    <button type="button" id="limpar-pesquisa" class="icone-limpar" style="display: none;">&times;</button> 
+                    <ul id="resultado-pesquisa" class="resultado-pesquisa"></ul> 
+                </div> 
+                <span class="icone-info" data-info="Para adicionar produtos mais facilmente, criamos pré-definições para eletrodomésticos comuns. Você ainda pode personalizar e criar aparelhos do modo que quiser. Fique à vontade para ajustar a potência e o tempo de uso como preferir!">?</span> 
+             
+                <div class="grupos-inputs"> 
+                    <label for="potencia">Potência (Watts)</label> 
+                    <span class="icone-info" data-info="Potência (W): É a força que o aparelho exige. (Ex: Um chuveiro de 5500W é muito mais potente que uma lâmpada de 10W). 
+                    Todo eletrodoméstico ou eletrônico possui uma etiqueta adesiva ou gravação em relevo direto no próprio corpo do produto. 
+                    
+                    Grandes eletrodomésticos (como geladeiras, máquinas de lavar, ar-condicionado e TVs) vêm de fábrica com aquela famosa etiqueta colorida de eficiência energética colada na frente ou na lateral. 
+                   
+                    Se o aparelho estiver instalado em um lugar de difícil acesso (como um ar-condicionado no alto da parede), a forma mais simples é consultar o manual. 
+                    
+                    Se você não tiver mais o manual e não conseguir erguer o aparelho para olhar embaixo, o Google resolve em segundos:
+                    Procure a marca e o modelo exato do aparelho (essa informação geralmente fica visível na frente do produto).
+                    Digite no buscador: Marca Modelo ficha técnica potência.
+                    Os sites de fabricantes ou de grandes lojas de varejo mostrarão a potência exata nas especificações do produto. ">?</span> 
+
+                    <div class="input-entrada"> 
+                        <input type="number" id="potencia" placeholder="Ex: 150" required> 
+                        <span class="unit">W</span> 
+                    </div> 
+                </div> 
+             
+                <div class="grupos-inputs"> 
+                    <label for="horas">Uso por Dia (Horas/Minutos)</label> 
+                    <div class="time-inputs"> 
+                        <input type="number" id="horas" placeholder="Hrs" min="0" max="24" required> 
+                        <input type="number" id="minutos" placeholder="Min" min="0" max="59"> 
+                    </div> 
+                </div> 
+             
+                <div class="grupos-inputs"> 
+                    <label for="dias">Dias de uso no mês</label> 
+                    <input type="number" id="dias" value="30" min="1" max="31"> 
+                </div> 
+                <div class="grupos-inputs"> 
+                    <div class="rotulo-fdu"> 
+                        <label>Fator de Uso</label> 
+                        <span class="icone-info" data-info="O Fator de Uso define a porcentagem de tempo que o aparelho realmente fica funcionando enquanto está ligado.
+
+                        Nem todo eletrônico gasta energia continuamente. Por exemplo: uma geladeira fica ligada 24h na tomada, mas o motor dela (que mais consome) desliga sozinho quando está fria o suficiente, operando cerca de 40% a 50% do tempo.
+                        
+                        Ajuste a barra para o lado econômico se o aparelho tiver termostato ou ciclos de pausa (como geladeiras, ferros de passar e ar-condicionado), ou mantenha em 100% (Contínuo) para aparelhos que gastam energia o tempo todo em que são usados (como lâmpadas, chuveiros e computadores).">?</span> 
+                        <span id="porcentagem-atual" class="porcentagem-class">100%</span> 
+                    </div> 
+                    <input type="range" id="fator-uso" min="0.1" max="1.0" step="0.1" value="1.0"> 
+                    <div class="rotulo-porcentagem"> 
+                        <span>Econômico</span> 
+                        <span>Contínuo</span> 
+                    </div> 
+                </div> 
+             
+                <button type="submit" id="botao-adicionar" class="botao-add">Calcular e Adicionar</button> 
+            </form> 
+        </aside> 
+    
+        <section class="dashboard"> 
+            <header class="dashboard-header"> 
+                <div class="sumario"> 
+                    <h2>Meus Aparelhos</h2> 
+                    <p>Total Mensal estimado: <span id="preco-total">R$ 0,00</span></p> 
+                    <small class="tarifa-info">Tarifa baseada no padrão brasileiro: <strong>R$ 0,92 / kWh</strong></small>
+                </div> 
+                <div class="acoes-header"> 
+                    <button id="limpar-tudo" class="botao-secundario">Limpar Tudo</button> 
+                    <button id="relatorio-botao" class="botao-primario">Relatório PDF</button> 
+                </div> 
+            </header> 
+         
+            <div id="org-aparelhos" class="org-aparelhos"></div> 
+        </section> 
+    </main>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 
+    <script src="js/hudprincipal.js"></script>
+    <script src="js/calculadora.js"></script>
+    <script src="js/relatorio.js"></script>
 
-
-    <script src="js/script.js"></script>
+    <div id="div-relatorio" style="display: none;">
+    </div>
 </body>
 </html>

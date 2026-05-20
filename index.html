@@ -1,19 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Home</title>
+    <title>Home - EcoWatt</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
+
+    <header class="main-header">
+        <div class="logo">
+            <span class="eco-part">Eco</span><span class="watt-part">Watt</span>
+        </div>
+        
+        <nav class="navbar">
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+            
+            <div class="nav-links" id="nav-links">
+                <ul class="nav-items">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="calculadora.html">Calculadora</a></li>
+                    <li><button id="toggle-escuro" class="botao-secundario" style="padding: 8px 12px;">🌙 Modo Escuro</button></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+      <main class="home-container">
+        <section class="projeto-info">
+            <h1>Sobre o EcoWatt</h1>
+            <p style="white-space: pre-line;">Aqui está uma versão expandida, estruturada e refinada do texto para a sua página Home, integrando perfeitamente os novos conceitos técnicos e os Objetivos da ONU ao seu conteúdo original.
+                
+                O projeto universitário EcoWatt tem como propósito aproximar e facilitar o processo de planejamento de gastos de energia, visando tanto alcançar um consumo econômico para o indivíduo quanto sustentável para o planeta. Busca-se com o projeto uma visão bem informativa, detalhando termos técnicos e categorizando aparelhos para que seja de melhor manuseio a quem não compreende o tema.
+                
+                Alinhado com as grandes diretrizes globais para o futuro, o EcoWatt foi desenvolvido visando abordar diretamente os Objetivos de Desenvolvimento Sustentável (ODS) da ONU, com foco especial no ODS 7 (Energia Limpa e Acessível) e no ODS 12 (Consumo e Produção Responsáveis). Acreditamos que a conscientização começa dentro de casa, transformando dados técnicos em hábitos sustentáveis.
+                Como Funciona a Nossa Calculadora?
+                
+                Para tornar essa análise possível, nossa ferramenta utiliza um motor de cálculo inteligente baseado em quatro pilares fundamentais do consumo elétrico:
+                
+                    Potência (Watts): É a força que o aparelho exige para funcionar. Quanto maior a potência, mais energia ele demanda em menos tempo.
+                
+                    Tempo de Uso (Horas/Minutos): O período diário em que o equipamento permanece ligado.
+                
+                    Dias de Uso no Mês: A frequência mensal de atividade do aparelho (por exemplo, 30 dias para uma geladeira ou 15 dias para uma máquina de lavar).
+                
+                    Fator de Uso: O grande segredo da precisão. Nem todo eletrônico gasta energia continuamente enquanto está na tomada. Uma geladeira, por exemplo, liga e desliga o motor sozinha através de um termostato. O Fator de Uso permite ajustar se o aparelho opera de forma Contínua (100% do tempo, como um chuveiro) ou Econômica (com ciclos de pausa), garantindo que o seu cálculo reflita a realidade.
+                
+                A plataforma foi desenhada para dar total liberdade ao usuário, permitindo simular cenários reais de forma dinâmica:
+
+                Para facilitar o processo, o sistema conta com pré-definições de eletrodomésticos comuns. Ao pesquisar ou selecionar um aparelho, os dados estimados de potência e uso são preenchidos de forma automática. No entanto, você ainda tem total liberdade para personalizar cada campo e criar aparelhos do zero, adaptando-os exatamente às especificações técnicas dos modelos que você possui na sua residência.
+                Editar e Ajustar
+                Seus hábitos mudaram ou você trocou de equipamento? Sem problemas. O painel permite editar qualquer aparelho já adicionado instantaneamente. Você pode testar como uma redução de 10 minutos no banho diário impacta o valor final da sua conta antes de aplicar a mudança na sua rotina.
+
+                Após mapear os eletrônicos da sua casa e obter o seu gasto mensal estimado, o EcoWatt permite que você exporte um Relatório em PDF completo com apenas um clique. Esse documento reúne todos os gráficos de consumo, a distribuição de gastos por aparelho e as métricas geradas pela calculadora. É uma ferramenta excelente para salvar o seu histórico, imprimir ou compartilhar com a sua família para que todos possam planejar metas de economia juntos!
+                O ideal é que você pesquise o seu aparelho e verifique corretamente as informações dele, para uma análise mais precisa. Esperamos que você, como usuário, possa utilizar a tecnologia da melhor forma!</p>
+        </section>
     
 
+        <aside class="atalhos">
+            <a href="calculadora.html" class="card">
+                <h3>Calculadora</h3>
+                <p>Simule seu consumo mensal.</p>
+            </a>
+        </aside>
+    </main>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
+<script src="js/hudprincipal.js"></script>
 
-
-
-    <script src="js/script.js"></script>
 </body>
 </html>
