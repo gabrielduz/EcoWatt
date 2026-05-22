@@ -95,7 +95,6 @@ body, .sidebar, .dashboard, .card-aparelho, input, select, textarea {
     cursor: pointer;
 }
 
-/* --- BLOCO DO MODO ESCURO (NÃO ALTERADO) --- */
 body.modo-escuro {
     --fundo-tela: #0f172a;
     --fundo-card: #1e293b;
@@ -126,7 +125,6 @@ body.modo-escuro textarea {
     color: var(--texto-principal);
     border: 1px solid var(--borda-suave);
 }
-/* -------------------------------------------- */
 
 @media (max-width: 992px) {
     .main-header {

@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Inicializar o estado do dashboard
     window.renderizarCards = function() { 
         if (!organizacaoAparelhos) return; 
         organizacaoAparelhos.innerHTML = ""; 
