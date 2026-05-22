@@ -17,7 +17,7 @@ window.aparelhos = [
     { nome: "Air Fryer (Fritadeira Sem Óleo)", potencia: 1500, fator: 0.8 } 
 ]; 
 
-window.aparelhosAdicionados = [];  
+window.aparelhosAdicionados = JSON.parse(localStorage.getItem('ecoWatt_aparelhos')) || [];
 let idEdicao = null;  
 
 const TARIFA_PADRAO = 0.92; 
@@ -40,7 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const LinhaPrecoTotal = document.getElementById('preco-total'); 
     const BotaoLimparTodos = document.getElementById('limpar-tudo'); 
 
-   
+    
+    function salvarNoLocalStorage() {
+        localStorage.setItem('ecoWatt_aparelhos', JSON.stringify(window.aparelhosAdicionados));
+    }
+
+
     function atualizarVisualFatorUso(valorDecimal) {
         if (!porcentagemInput) return;
         
@@ -192,7 +197,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (index !== -1) window.aparelhosAdicionados[index] = dadosAparelho; 
             } else { 
                 window.aparelhosAdicionados.push(dadosAparelho); 
-            } 
+            }
+
+            salvarNoLocalStorage();
+
 
             window.limparFormulario(); 
             window.renderizarCards(); 
@@ -215,6 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
             window.renderizarCards(); 
             if (idEdicao === id) window.limparFormulario(); 
         } 
+
+        salvarNoLocalStorage();
+
     } 
 
     function prepararEdicao(id) { 
@@ -256,6 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.aparelhosAdicionados.length === 0) return; 
             if (confirm("Deseja realmente limpar todos os aparelhos do seu painel?")) { 
                 window.aparelhosAdicionados = []; 
+
+                salvarNoLocalStorage();
+
                 window.renderizarCards(); 
                 window.limparFormulario(); 
             } 
