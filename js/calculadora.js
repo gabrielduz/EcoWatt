@@ -17,14 +17,13 @@ window.aparelhos = [
     { nome: "Air Fryer (Fritadeira Sem Óleo)", potencia: 1500, fator: 0.8 } 
 ]; 
 
-// VARIÁVEIS DE ESTADO (Expostas no escopo global para o gerador de relatórios)
 window.aparelhosAdicionados = [];  
 let idEdicao = null;  
 
 const TARIFA_PADRAO = 0.92; 
 
 document.addEventListener('DOMContentLoaded', () => { 
-    // CAPTURA DOS ELEMENTOS DO DOM 
+
     const FormsAparelho = document.getElementById('forms-aparelhos'); 
     const inputPesquisa = document.getElementById('pesquisa-aparelhos'); 
     const listaResultados = document.getElementById('resultado-pesquisa'); 
@@ -41,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const LinhaPrecoTotal = document.getElementById('preco-total'); 
     const BotaoLimparTodos = document.getElementById('limpar-tudo'); 
 
-    // FUNÇÃO AUXILIAR: Atualiza a cor e o texto do badge de porcentagem do Fator de Uso
+   
     function atualizarVisualFatorUso(valorDecimal) {
         if (!porcentagemInput) return;
         
@@ -49,13 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
         porcentagemInput.innerText = porcentagem + "%"; 
 
         if (valorDecimal <= 0.3) {
-            porcentagemInput.style.backgroundColor = "#ef4444"; // Vermelho (Econômico Extremo)
+            porcentagemInput.style.backgroundColor = "#ef4444"; 
         } else if (valorDecimal <= 0.5) {
-            porcentagemInput.style.backgroundColor = "#f59e0b"; // Laranja (Econômico)
+            porcentagemInput.style.backgroundColor = "#f59e0b";
         } else if (valorDecimal <= 0.8) {
-            porcentagemInput.style.backgroundColor = "#eab308"; // Amarelo (Moderado)
+            porcentagemInput.style.backgroundColor = "#eab308";
         } else {
-            porcentagemInput.style.backgroundColor = "var(--verde-sustentavel)"; // Verde / Contínuo (100%)
+            porcentagemInput.style.backgroundColor = "var(--verde-sustentavel)";
         }
     }
 
@@ -120,14 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.renderizarCards(); 
 
-    // ATUALIZAÇÃO DO SLIDER EM TEMPO REAL
     if (inputFatUso) { 
         inputFatUso.addEventListener('input', (e) => { 
             atualizarVisualFatorUso(parseFloat(e.target.value));
         }); 
     } 
 
-    // LÓGICA DO CAMPO DE BUSCA (Autocomplete) 
     if (inputPesquisa && listaResultados) { 
         inputPesquisa.addEventListener('input', () => { 
             const termo = inputPesquisa.value.toLowerCase(); 
@@ -169,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } 
     } 
 
-    //EVENTO DE SUBMISSÃO DO FORMULÁRIO 
     if (FormsAparelho) { 
         FormsAparelho.addEventListener('submit', (e) => { 
             e.preventDefault(); 
@@ -255,8 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } 
         inputPesquisa.focus(); 
     } 
-
-    // AÇÃO DE LIMPAR TUDO 
+    
     if (BotaoLimparTodos) { 
         BotaoLimparTodos.addEventListener('click', () => { 
             if (window.aparelhosAdicionados.length === 0) return; 

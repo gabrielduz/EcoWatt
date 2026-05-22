@@ -15,7 +15,6 @@
     max-height: calc(100vh - 120px);
     overflow-y: auto;
     scroll-behavior: smooth;
-
 }
 
 .projeto-info::-webkit-scrollbar {
@@ -37,16 +36,18 @@
     margin-bottom: 15px;
 }
 
-.atalhos {
+.atalhos, .card {
     display: flex;
     flex-direction: column;
+}
+
+.atalhos {
     gap: 20px;
 }
 
 .card {
-    display: block;
     padding: 20px;
-    background-color: var(--verde-sustentavel);
+    background-color: var(--amarelo-eletrico);
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -59,9 +60,7 @@
     background-color: var(--verde-hover);
 }
 
-
-
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .home-container {
         grid-template-columns: 1fr;
         padding: 20px 5%;

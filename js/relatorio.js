@@ -4,17 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (relatorioPDFbotao) { 
         relatorioPDFbotao.addEventListener('click', function() { 
-            // Validação de segurança caso não existam aparelhos
             if (!window.aparelhosAdicionados || window.aparelhosAdicionados.length === 0) {
                 return alert("Adicione pelo menos um aparelho para exportar o relatório!");
             }
 
-            // Evita cliques duplicados desativando o botão temporariamente 
             relatorioPDFbotao.disabled = true; 
             const textoOriginal = relatorioPDFbotao.innerHTML; 
             relatorioPDFbotao.innerHTML = "Gerando PDF..."; 
-
-            // Cálculos de Agrupamento e Totais 
             let totalKwhMes = 0; 
             let totalCustoMes = 0; 
             window.aparelhosAdicionados.forEach(a => { 
@@ -50,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Instale sensores de presença ou dimmers em corredores e áreas de pouca circulação." 
             ]; 
 
-            // Classificação Dinâmica Baseada no Consumo
             let ecoNivel = ""; let ecoCor = ""; let ecoMensagem = ""; 
             let ecoLogNivel = ""; let ecoLogCor = ""; let ecoLogMensagem = ""; 
             let dicasSelecionadas = []; 
@@ -86,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 listaDicasHtml += `<li style="margin-bottom: 8px; font-size: 13px; line-height: 1.4; color: #444;">${dica}</li>`; 
             }); 
 
-            // Montagem das Linhas da Tabela 
             let tabelaLinhasHtml = ""; 
             window.aparelhosAdicionados.forEach(a => { 
                 const partMensal = totalKwhMes > 0 ? ((a.consumoKwh / totalKwhMes) * 100).toFixed(1) : 0; 
@@ -100,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `; 
             }); 
 
-            // Injeção da Estrutura Visual Completa do Relatório 
+
             const templateHtml = document.getElementById('div-relatorio'); 
             templateHtml.innerHTML = ` 
                 <div style="padding: 30px; font-family: Arial, sans-serif; color: #333; background-color: #fff;"> 
@@ -153,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div> 
 
                     <div style="margin-bottom: 35px; padding: 20px; border-radius: 8px; background-color: #f8f9fa; border: 1px solid #e2e8f0;"> 
-                        <h4 style="margin: 0 0 12px 0; color: #003366; font-size: 15px;">💡 Plano de Ação Personalizado (10 Recomendações)</h4> 
+                        <h4 style="margin: 0 0 12px 0; color: #003366; font-size: 15px;">💡 Plano de Ação (10 Recomendações)</h4> 
                         <ol style="margin: 0; padding-left: 20px;"> ${listaDicasHtml} </ol> 
                     </div> 
 
@@ -181,10 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div> 
             `; 
 
-            // Tornar o template visível temporariamente para renderização do Chart.js
             templateHtml.style.display = "block"; 
 
-            // Renderiza o gráfico de rosca SEM ANIMAÇÃO 
+
             const ctx = document.getElementById('pdf-chart-canvas').getContext('2d'); 
             new Chart(ctx, { 
                 type: 'doughnut', 
@@ -211,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } 
             }); 
 
-            // Configuração dos parâmetros do html2pdf 
+
             const opcoesPdf = { 
                 margin:       10, 
                 filename:     `Relatorio_EcoWatt_${new Date().toISOString().slice(0,10)}.pdf`, 
@@ -220,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' } 
             }; 
 
-            // Delay seguro para processar o download do arquivo
             setTimeout(() => { 
                 html2pdf().set(opcoesPdf).from(templateHtml).save().then(() => {
                     relatorioPDFbotao.disabled = false;

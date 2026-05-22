@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // MENU HAMBÚRGUER MOBILE 
+
     const menuToggle = document.getElementById('menu-toggle'); 
     const navLinks = document.getElementById('nav-links'); 
     
@@ -9,27 +9,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }); 
     } 
 
-    const botaoDark = document.getElementById("toggle-escuro");
+    const botaoModo = document.getElementById("toggle-modo");
     const body = document.body;
 
     const modoSalvo = localStorage.getItem("tema");
 
-    if (modoSalvo === "dark") {
+    if (modoSalvo === "modo-escuro") {
         body.classList.add("modo-escuro");
-        botaoDark.textContent = "☀️ Modo Claro";
+        botaoModo.textContent = "Modo Claro";
+    } else {
+        body.classList.add("modo-claro");
+        botaoModo.textContent = "Modo Escuro";
     }
 
 
-    botaoDark.addEventListener("click", () => {
+    botaoModo.addEventListener("click", () => {
         body.classList.toggle("modo-escuro");
         
 
         if (body.classList.contains("modo-escuro")) {
-            botaoDark.textContent = "☀️ Modo Claro";
-            localStorage.setItem("tema", "dark");
+            botaoModo.textContent = "Modo Claro";
+            localStorage.setItem("tema", "modo-escuro");
         } else {
-            botaoDark.textContent = "🌙 Modo Escuro";
-            localStorage.setItem("tema", "light");
+            botaoModo.textContent = "Modo Escuro";
+            localStorage.setItem("tema", "modo-claro");
         }
     });
 });
