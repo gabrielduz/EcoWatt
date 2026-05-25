@@ -1,5 +1,5 @@
 # Eco Watt 🌿
-Projeto de sustentabilidade para a faculdade.
+Projeto de sustentabilidade 1º Semestre 2026
 
 ## Integrantes
 - Gabriel Garcia Duz R291FD8
